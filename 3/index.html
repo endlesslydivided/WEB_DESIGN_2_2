@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Функция load</title>
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>
+    <link href="style.css" media="screen" rel="stylesheet" type="text/css" />	
+    <style>
+    body { width: 600px; margin:2px auto} 
+	div 
+	{
+	border:  2px solid black;
+	text-align: center;
+	font-family: Calibri;
+	}	
+    </style> 
+</head>
+<body>
+         <script type="text/javascript">
+            jQuery(document).ready(function(){jQuery('#ex1').click(function(){jQuery(this).load('a.html');})});
+            jQuery(document).ready(function(){jQuery('#ex2').mouseover(function(){jQuery(this).load('b.html');})});
+            jQuery(document).ready(function(){jQuery('#ex3').mouseout(function(){jQuery(this).load('c.html');})});
+            jQuery(document).ready(function(){jQuery('#ex4').dblclick(function(){jQuery(this).load('d.html');})});
+         </script>        
+        <div class="example cursor" id="ex1"><button>Нажми на меня один раз</button></div>
+        <div class="example cursor" id="ex2">Наведи на меня мышь</div>
+        <div class="example cursor" id="ex3">Наведи и убери мышь</div>
+        <div class="example cursor" id="ex4">Нажми на меня два раза</div>
+
+</body>
+</html>

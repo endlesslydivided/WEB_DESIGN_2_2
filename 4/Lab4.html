@@ -1,0 +1,91 @@
+﻿<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lab 4</title>
+  <style>
+		
+	body
+	{
+	background-color:black;
+	}
+	#cube	
+	{
+    background:		white;
+	top: 			46%;
+	left: 			47%;
+	position:		absolute;
+	height: 		50px;
+	width:			50px;
+	border: 		solid 3px gray;
+	box-shadow: 	0 0 100px white;
+	z-index:		7;
+	}
+	#smoke, #smoke1
+	{
+	z-index: 		1; 
+	width:			120px;
+	height:			120px;
+	top: 			40%;
+	left: 			46%;
+	position:		absolute;
+	}
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+ 
+<button id="start">Пустить дым</button>
+<button id="stop">Остановить дым</button>
+<div id="cube"></div>
+<div id="container"></div>
+
+ 
+<script>
+
+var stop=0;
+
+$( document ).ready(
+function(){
+	$( "#stop" ).click
+	(
+		function() 
+			{ 
+				stop = 1; 
+			}
+	);
+
+
+	$( "#start" ).click
+	(	
+		function animation()
+			{
+				$("#container").append('<image src="smoke.png" id="smoke">');
+				$("#smoke").animate({
+										left:"+="+(Math.random() *(50+50) - 50),
+										top :"+="+(Math.random() *(50+50) - 50),
+										opacity: 0
+									},1000,"linear",function()
+														{
+															$("#smoke").remove();
+															$("#smoke1").remove();
+															if(stop == 0)
+															{
+																animation();
+															}
+															else if (stop ==1)
+															{
+																stop = 0;
+															}
+														}
+									);				 
+			}
+	);
+});
+
+ 
+</script>
+ 
+</body>
+</html>

@@ -1,0 +1,26 @@
+var request=null;
+
+
+jQuery("#serialization").click(
+function() {
+	
+	var json = document.getElementsByTagName("div");
+	for(i=0;i< json.length;i++)
+    {var o = {
+       tagName: json.item(i).tagName
+    };
+    var l = 0;
+    for (l ; l < json.item(i).attributes.length; l++) {
+        o[json.item(i).attributes[l].name] = json.item(i).attributes[l].value;
+    }
+	
+$.post("php/connect.php", {json : JSON.stringify(o,["tagName","style"],' ')})
+	}
+
+			})
+jQuery("#openfile").click(
+function() {
+	window.open("../data/test.json")
+	})	 
+	 
+

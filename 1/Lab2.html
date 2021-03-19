@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title>Google search</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="ajax.js"></script>
+    <style type="text/css">
+		.mouseOut{ background: #ffffff; color: red; }
+		.mouseOver{ background: #ccccff; color: black; }
+		table {width:250px}
+	</style>
+  </head>
+  <body>
+      <form id="forma" method="post">
+        <p><strong style="font-size: 24pt">Поиск стран</strong><br /></p>
+        <input name="country" style="width:250px" autocomplete="off" onkeyup="KeyPress(this.value)" />
+        <input type="submit" value="Поиск" />
+        <div align="left" id="searchresults">
+        </div>
+      </form>
+  </body>
+</html>

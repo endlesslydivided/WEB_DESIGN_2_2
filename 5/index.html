@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+        <title>Чат</title>
+   	
+    	<script language="JavaScript" type="text/javascript" src="js/jquery.min.js"></script>
+    	<script language="JavaScript" type="text/javascript" src="js/CometServerApi.js"></script>
+</head>
+
+    <body>
+        <div id="chat"></div> 
+
+			<input type="text" id="username" placeholder="Ваше имя пользователя"> 
+			<br>
+
+			<textarea id="message" placeholder="Введите сообщение здесь"></textarea>
+			<br>
+        
+			<input type="button" onclick="SendMsg()" value="Отправить сообщение">
+
+        <div id="response"></div>
+        
+
+
+        <script>
+			var str ;
+            function SendMsg() {
+				
+                var text = $("#message").val();
+                var name = $("#username").val();
+                $("#message").val("");  
+                $("#username").val("");  
+				var datel = new Date();
+				str = datel.toLocaleTimeString();
+                $("#chat").append("<p><b>" + name + ": </b>" + text  + " " + str +"</p>");
+                 
+                CometServer().web_pipe_send("web_chat_pipe", {"text":text, "name":name});
+
+            }
+             
+            $(document).ready(function() {
+                CometServer().start({dev_id:15,user_id:"ya"});
+                 
+                CometServer().subscription("web_chat_pipe", function(msg)
+                {	
+                    console.log(msg);
+					var datel = new Date()
+					str = datel.toLocaleTimeString();
+                    $("#chat").append("<p><b> (ANSWEAR) " + msg.data.name+": </b>" + msg.data.text + " " + str +"</p>");
+                });
+				;
+                CometServer().subscription("#web_chat_pipe", function(p)
+                {
+                    console.log(p);
+                    $("#response").html("Message delivered to " + p.data.number_messages + " users " + p.data.error);
+                });
+            });
+        </script>
+        
+    </body>
+</html>

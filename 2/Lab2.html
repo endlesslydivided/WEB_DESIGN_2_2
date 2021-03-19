@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Forum</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="ajax.js"></script>
+    <style type="text/css">
+		.mouseOut{ background: #ffffff; color: red; }
+		.mouseOver{ background: #ccccff; color: black; }
+		table {width:250px}
+	</style>
+  </head>
+  <body>
+      <form id="forma" >
+        <p><strong style="font-size: 24pt">Введите логин и пароль</strong><br /></p>
+        <input name="login" id = "LOGIN" style="width:250px" autocomplete="off" />
+		  <input name="password" id = "PASS" style="width:250px" autocomplete="off" />
+        <input type="submit" value="Вход" onclick="Autorize(LOGIN.value,PASS.value)" />
+        <div align="left" id="searchresults">
+        </div>
+      </form>
+  </body>
+</html>
